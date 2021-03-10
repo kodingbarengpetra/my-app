@@ -27,3 +27,6 @@ jobs:
           docker --version
           docker build --quiet . -t myapp
           aws lightsail push-container-image --service-name $SERVICE_NAME --label $IMAGE_LABEL --image myapp
+          IMAGE_NAME=$(aws lightsail get-container-images --service-name $SERVICE_NAME | jq -r .containerImages[0].image)
+          DEPLOYMENT_JSON=$(jq -n --arg SERVICE_NAME $SERVICE_NAME --arg IMAGE_NAME $IMAGE_NAME -f deploy/deployment.template.jq)
+          aws lightsail create-container-service-deployment --service-name $SERVICE_NAME --cli-input-json "$DEPLOYMENT_JSON"
