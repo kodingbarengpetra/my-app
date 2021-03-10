@@ -5,6 +5,9 @@
         "image": $IMAGE_NAME,
         "ports": {
            "80": "HTTP"
+        },
+        "environment": {
+            "APP_KEY": APP_KEY
         }
      }
   },
