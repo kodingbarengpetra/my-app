@@ -7,7 +7,7 @@
            "80": "HTTP"
         },
         "environment": {
-            "APP_KEY": APP_KEY
+            "APP_KEY": $APP_KEY
         }
      }
   },
