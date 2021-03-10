@@ -25,5 +25,5 @@ jobs:
           sudo chmod +x /usr/local/bin/lightsailctl
           aws --version
           docker --version
-          docker build . -t myapp
+          docker build --quiet . -t myapp
           aws lightsail push-container-image --service-name $SERVICE_NAME --label $IMAGE_LABEL --image myapp
